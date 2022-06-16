@@ -17,11 +17,9 @@ public class Arr {
         
         int a = 4;
              
-        if (1 == a);{
+        if (1 == a){
                 System.out.println("yes");
-    }
-    
-                else {
+    }else {
                 System.out.println("not at all");
                         }
                     

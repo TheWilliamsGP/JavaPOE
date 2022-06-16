@@ -17,16 +17,44 @@ import java.util.HashMap;
  */
 public class Login_F extends javax.swing.JFrame {
 
-    String usernameText;
-    char password;
-    Registration a = new Registration();
+ 
     private CharSequence checkValidPassword;
-   
+   // private String name; 
+    //private String surname;   
+    //private String Username; 
+    //private String password;
+
+    
+     /**
+     *
+     * @param name
+     * @param surname
+     * @param Username
+     * @param password
+     */
+      //  public Login_F(String Aname,String Asurname,String AUsername, String Apassword){
+        
+      //  name = Aname;
+     //   surname = Asurname;
+     //   Username = AUsername ;
+        //password = Apassword;
+    
+    
+  
   
     public Login_F() {
         initComponents();
+           
+       
+  
+    Registration a = new Registration();
+    // String  n,s,u,p;
+    //p = a.Passwords;
+   // u = a.Userames;
+            
     }
 
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -197,8 +225,7 @@ public class Login_F extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void T_UserNameKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_T_UserNameKeyReleased
-       Pattern user = Pattern.compile("^(?=.{0,5}$)([\\w]+)_([\\w]+)$");
-       Matcher name = user.matcher(T_UserName.getText());
+    
     }//GEN-LAST:event_T_UserNameKeyReleased
 
     private void jRegActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRegActionPerformed
@@ -208,30 +235,22 @@ public class Login_F extends javax.swing.JFrame {
 
     private void JloginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JloginActionPerformed
         
-        String password = String.valueOf(jPassword1.getPassword());
-        String username = T_UserName.getText();
-    
-    if(password.contains("one") && (username.contains("sadeeq"))){
-        T_UserName.setText(null);
-        T_UserName.setText(null);
-        
-        
-        
-        HomePage Info = new HomePage();
-        Info.setVisible(true);
+
+      //  HomePage Info = new HomePage();
+      //  Info.setVisible(true);
         
             
-    }
-    else 
-    { 
-        JOptionPane.showMessageDialog(null,"Invalid Login Details", "Login Error",JOptionPane.ERROR_MESSAGE);
-        T_UserName.setText(null);
-        T_UserName.setText(null);   
-            }
+   // }
+   // else 
+    //{ 
+      //  JOptionPane.showMessageDialog(null,"Invalid Login Details", "Login Error",JOptionPane.ERROR_MESSAGE);
+        //T_UserName.setText(null);
+      //  T_UserName.setText(null);   
+            
     }//GEN-LAST:event_JloginActionPerformed
 
     private void T_UserNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_T_UserNameActionPerformed
-        
+     
     }//GEN-LAST:event_T_UserNameActionPerformed
 
     private void T_UserNameFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_T_UserNameFocusGained
@@ -265,7 +284,7 @@ public class Login_F extends javax.swing.JFrame {
            jPassword1.setForeground(Color.GRAY);    }//GEN-LAST:event_jPassword1FocusLost
     }
     private void jPassword1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPassword1ActionPerformed
-      
+    
     }//GEN-LAST:event_jPassword1ActionPerformed
         
     /**

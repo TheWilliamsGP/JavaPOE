@@ -22,12 +22,10 @@ import java_poe.Reg;
  */
 public class Login_Page implements ActionListener {
      
-    public String username;
-    public String password;
     
+
     
     public static final int UserName_LENGTH = 5;
-    
     private static JLabel UsernameLabel;
     private static JTextField usernameText;
     private static JLabel passwordLabel;
@@ -154,7 +152,7 @@ public class Login_Page implements ActionListener {
      Object source = e.getSource();
         if (source == CreateACC)
         {
-            Reg Info = new Reg();
+         
             
         }
          

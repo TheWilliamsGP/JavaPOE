@@ -40,5 +40,6 @@ public class JavaApplication1 {
     System.out.println("Is " + fnum + " greater than equal " + snum + " " + b6);
     
     }
-    
+    }
+}
     

@@ -22,17 +22,6 @@ import java.util.HashMap;
  * @author sadeeqwilliams
  */
 
-    
-
-
-/**
- *
- * @author sadeeqwilliams
- */
-
-   
-
-
 public class Reg  implements ActionListener
         
 {
@@ -48,26 +37,18 @@ public class Reg  implements ActionListener
     private static JTextField usernameText;
     private static JLabel passwordLabel;
     private static JPasswordField passwordText;
-    private static JButton Confirm;
+   // private static JButton Confirm;
     private static JButton Check;
     private static JButton Cancel;
     private static JButton Exit; 
     private static JLabel condition;
     
     private static JLabel Head;
+    private JFrame frame = new JFrame("Login");
+    private JButton Confirm = new JButton("Confirm");
     
     
- 
-        /*
-A simple password validator which validates passwords based on some simple rules.
-Your password should be atleast 8 characters long and should contain atleast
-one Uppercase letter, one Lowercase letter, one Number and one Special Character.
-This was my first tryst with GUIs in Java.
-*/
-    
-        public static void main(String[] args) {
-    
-       
+       public Reg(){
         JPanel panel = new JPanel();
         
         panel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 10));
@@ -80,8 +61,10 @@ This was my first tryst with GUIs in Java.
         JPanel line = new JPanel();
         line.setBounds(5, 150, 600, 15);
         line.setBackground(new java.awt.Color(0, 0, 0)); 
-             
-        JFrame frame = new JFrame();
+            
+        
+        
+        //JFrame frame = new JFrame();
         frame.setSize(600, 650);
         frame.setBackground(new java.awt.Color(204, 204, 204));
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -140,7 +123,7 @@ This was my first tryst with GUIs in Java.
         passwordText.setBounds(260, 360, 200, 29);
         panel.add(passwordText);
         
-        Confirm = new JButton("Confirm");
+       // Confirm = new JButton("Confirm");
         Confirm.setBounds(250, 400, 80, 25);
         Confirm.addActionListener(new Reg());
         panel.add(Confirm);
@@ -224,11 +207,12 @@ This was my first tryst with GUIs in Java.
         
             JOptionPane.showMessageDialog(null,"password incorrect","error message",JOptionPane.ERROR_MESSAGE);
              }
-         
-             for (int i=0; i < userList.length; i++){
-                 userList[i] = new Object();
+                
+        	new Login_Page();
+             //for (int i=0; i < userList.length; i++){
+             //    userList[i] = new Object();
                  
-             }
+            // }
         
         } else if(source == Cancel)
         {
@@ -243,8 +227,10 @@ This was my first tryst with GUIs in Java.
     }
    
 
+        public static void main(String[] args) {
     
-
+        new Reg();
     }
+}
 
 

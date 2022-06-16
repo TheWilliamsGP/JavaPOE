@@ -10,7 +10,9 @@ import java.awt.event.*;
 import java.util.Arrays;
 import javax.swing.ButtonGroup;
 import java.awt.Toolkit;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.jar.Attributes.Name;
 import javax.swing.JButton;
 import java.util.regex.*;
 import static javax.management.Query.*;
@@ -22,9 +24,13 @@ public class Registration extends javax.swing.JFrame implements ActionListener
   
 {
     public static final int PASSWORD_LENGTH = 8;
-      private static JLabel info;
+    private static JLabel info;
     public static final int username_LENGTH = 5;
-
+    public String Names;
+    public String Surames;
+    public String Userames;
+    public String Passwords;
+     private ArrayList<Login_F> userArray = new ArrayList<Login_F>();
 
                 
     /**
@@ -34,7 +40,13 @@ public class Registration extends javax.swing.JFrame implements ActionListener
      public Registration(){
         initComponents();
     }
-
+ /**
+     *
+     * @param Name
+     * @param Surname
+     * @param Username
+     * @param Password
+     */
       
     
 
@@ -196,13 +208,13 @@ public class Registration extends javax.swing.JFrame implements ActionListener
                                 .addContainerGap()
                                 .addComponent(Cancel)
                                 .addGap(1, 1, 1)))
-                        .addGroup(plabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(usernameText, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(plabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(usernameText)
                             .addGroup(plabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addGroup(plabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                     .addComponent(jTextField2)
                                     .addComponent(jPASSWORD, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jTextField1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE))
                                 .addComponent(Confirm)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(paslab, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -290,27 +302,40 @@ public class Registration extends javax.swing.JFrame implements ActionListener
     private void jPASSWORDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPASSWORDActionPerformed
 
         }
+     public boolean checkValidPassword(char[] password)
+    {
         
-        public static boolean checkPasswordComplexity(String word){
-        boolean contains_upper = false;
-        boolean contains_lower = false;
-        boolean contains_digit = false;
-        boolean contains_special = false;
-        for (int i=0; i < word.length(); i++){
-            if (Character.isUpperCase(word.charAt(i)))
-               contains_upper = true;
-   
-            if (Character.isLowerCase(word.charAt(i)))
-               contains_lower = true;
-            
-            if (Character.isDigit(word.charAt(i)))
-                contains_digit = true;
-            
-            if ( ! ((Character.getNumericValue(word.charAt(i)) > -1) && 
-                    (Character.getNumericValue(word.charAt(i)) < 36)))
-                contains_special = true;
+        int upC = 0; 
+        int lwC = 0; 
+        int num = 0;
+        
+        //This function returns different values based on what is missing in the parameter 'password'
+        if(password.length < 8)
+        {
+            return false;
         }
-        return (contains_upper && contains_lower && contains_digit && contains_special);
+        for(int i = 0; i < password.length; i++)
+        {
+            char c = password[i];
+            if(Character.isUpperCase(c))
+            {
+                upC = 1;
+            }
+            else if(Character.isLowerCase(c))
+            {
+                lwC = 1;
+            }
+            else if(Character.isDigit(c))
+            {
+                num = 1;
+            }
+           
+        }
+        if(upC == 1 && lwC == 1 && num == 1)
+        {
+            return true;
+        }
+        return false;
     
     }//GEN-LAST:event_jPASSWORDActionPerformed
 
@@ -318,19 +343,20 @@ public class Registration extends javax.swing.JFrame implements ActionListener
        Pattern user = Pattern.compile("^(?=.{0,5}$)([\\w]+)_([\\w]+)$");
        Matcher name = user.matcher(usernameText.getText());
 
-   
-        if( (name.matches())){
-        JOptionPane.showMessageDialog(null,"username incorrect","error message",JOptionPane.ERROR_MESSAGE);
+   String Usernames = usernameText.getText();
+       if((!name.matches())){
+     // if(checkUsername(Usernames)){  
+      JOptionPane.showMessageDialog(null,"username incorrect","error message",JOptionPane.ERROR_MESSAGE);
     }
     else {          
         JOptionPane.showMessageDialog(null,"username correct");
     }
     
         String message = "";
-       // String password  = jPASSWORD.getPassword(); //getPassword() method returns the typed password as a character array
-        //String Username =  usernameText.getText();
+        char[] Password  = jPASSWORD.getPassword(); //getPassword() method returns the typed password as a character array
+        //String Usernames =  usernameText.getText();
 
-        if(checkPasswordComplexity(""))// && checkUser(Username))
+        if(checkValidPassword(Password))// && checkUser(Username))
         {
             JOptionPane.showMessageDialog(null,"password correct");
          Login_F Info = new Login_F();
@@ -339,6 +365,14 @@ public class Registration extends javax.swing.JFrame implements ActionListener
         
             JOptionPane.showMessageDialog(null,"password incorrect","error message",JOptionPane.ERROR_MESSAGE);
             }
+         //add user to array
+            // Login_F newUser = new Login_F(Name,Surname,Username,password);
+            // userArray.add(newUser);
+        
+        Login_F Info = new Login_F();
+                Info.setVisible(true);
+                
+       
 
                   }//GEN-LAST:event_ConfirmActionPerformed
 
@@ -348,12 +382,20 @@ public class Registration extends javax.swing.JFrame implements ActionListener
     }//GEN-LAST:event_CancelActionPerformed
 
     private void usernameTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usernameTextActionPerformed
-    }public static boolean checkUsername(String username){
-        // no need to have conditional statements
-        return username.contains("_") && username.length() <= 5;    }//GEN-LAST:event_usernameTextActionPerformed
+   
+  
+       // public static boolean checkUsername(String username){
+        // no need to have conditional statements  
+      // return username.contains("_") && username.length() <= 5;
+        
+    }//GEN-LAST:event_usernameTextActionPerformed
     
     
-    
+        
+
+   
+
+
     /**
      * @param args the command line arguments
      */
@@ -412,7 +454,7 @@ public class Registration extends javax.swing.JFrame implements ActionListener
     private javax.swing.JLabel jUSERNAME;
     private javax.swing.JLabel paslab;
     private javax.swing.JPanel plab;
-    public javax.swing.JTextField usernameText;
+    private javax.swing.JTextField usernameText;
     // End of variables declaration//GEN-END:variables
 
     @Override

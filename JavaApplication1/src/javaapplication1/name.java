@@ -8,6 +8,6 @@ package javaapplication1;
  *
  * @author sadeeqwilliams
  */
-plass name {
+class name {
     
 }

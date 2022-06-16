@@ -90,13 +90,13 @@
                                       <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="usernameText" alignment="1" min="-2" pref="130" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="usernameText" max="32767" attributes="0"/>
                                   <Group type="103" groupAlignment="1" attributes="0">
                                       <Group type="103" alignment="1" groupAlignment="1" max="-2" attributes="0">
                                           <Component id="jTextField2" max="32767" attributes="0"/>
                                           <Component id="jPASSWORD" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="jTextField1" min="-2" pref="130" max="-2" attributes="0"/>
+                                          <Component id="jTextField1" alignment="0" pref="130" max="32767" attributes="0"/>
                                       </Group>
                                       <Component id="Confirm" min="-2" max="-2" attributes="0"/>
                                   </Group>
@@ -351,9 +351,6 @@
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="usernameTextActionPerformed"/>
               </Events>
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-              </AuxValues>
             </Component>
           </SubComponents>
         </Container>
